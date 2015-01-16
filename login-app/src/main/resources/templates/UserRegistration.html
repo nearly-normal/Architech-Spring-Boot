@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" th:href="@{/assets/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../assets/css/thymeleaf-demo.css" th:href="@{/assets/css/thymeleaf-demo.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <title>User Registration</title>
+
+    <style>
+        .error {
+            color: #ff0000;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <h1>User Registration</h1>
+    </div>
+    <form method="POST" modelAttribute="user" action="#" th:action="@{addUser}" th:object="${user}">
+        <table>
+            <tr>
+                <td>User Name</td>
+                <td><input type="text" th:field="*{userName}" class="small" th:errorclass="fieldError"/></td>
+                <td th:if="${#fields.hasErrors('userName')}"  th:errorclass="fieldError" th:errors="*{userName}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" th:field="*{password}" class="small" th:errorclass="fieldError"/></td>
+                <td th:if="${#fields.hasErrors('password')}"  th:errorclass="fieldError" th:errors="*{password}">Name Error</td>
+
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td><input type="text" th:field="*{emailAddress}" class="small" th:errorclass="fieldError"/></td>
+                <td th:if="${#fields.hasErrors('emailAddress')}"  th:errorclass="fieldError" th:errors="*{emailAddress}">Name Error</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+</div>
+</body>
+</html>

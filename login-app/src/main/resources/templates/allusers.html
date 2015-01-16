@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" th:href="@{/assets/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../assets/css/thymeleaf-demo.css" th:href="@{/assets/css/thymeleaf-demo.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <title>User Registration</title>
+
+    <style>
+        tr:first-child {
+            font-weight: bold;
+            background-color: #C6C9C4;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="span10 offset1">
+    <br/>
+    <span class="alert alert-success" th:text="${success}">This is an unescaped sample text</span>
+    <br/>
+    <br/>
+
+    <h2>List of Users</h2>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>User Name</td>
+            <td>Email</td>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.ID}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.emailAddress}"></td>
+        </tr>
+    </table>
+    <br/>
+    <a class="btn" href="#" th:href="@{/login/new}"> Add New User </a>
+</div>
+</body>
+</html>
